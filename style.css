@@ -1,0 +1,133 @@
+
+:root {
+    --HeaderHeight: 76px;
+    --TabbarHeight: 64px;
+}
+
+/* ページ全体 */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    padding-top: var(--HeaderHeight);
+}
+/* 上部ヘッダー */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--HeaderHeight);
+    box-sizing: border-box;
+    background: #ffffff;
+    z-index: 1000;
+}
+/* メイン領域：ヘッダーとタブバーの間 */
+main {
+    height: calc(
+        100dvh - var(--HeaderHeight) - var(--TabbarHeight)
+    );
+    box-sizing: border-box;
+    padding: 12px;
+}
+/* リストの形式変更 */
+ul {
+    list-style-type: square; /*「□ 要素」にする*/
+}
+
+/* 各画面 */
+.Page {
+    display: none;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.Page.Active {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+/* キャラリストとキャラ詳細の横並び部分 */
+/* TODO:ウィンドウの横幅最低値の設定 */
+.ItemContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    flex-shrink: 0;
+}
+/* 枠付きブロック：共通 */
+.ItemBlock {
+    border: 1px solid #888;
+    border-radius: 8px; /*ボックスの角の丸さ*/
+    padding: 16px;
+    margin-bottom: 12px; /*下の余白？*/
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.ItemBlock h3{
+    margin-top: 2%;
+}
+.ItemBlock p{
+    line-height: 0.5; /*下部の余白変更*/
+}
+/* ホームのキャラリスト */
+.HomeCharaList{
+    height: 30dvh;
+}
+/* ログ：残りの高さを使う */
+.BottomLongBlock {
+    flex: 1;
+    min-height: 0;
+}
+.BottomLongBlock h3{
+    margin-top: 0.9%;
+}
+/* 再生速度変更 */
+.TimeKeeperBlock{
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* 下部固定タブバー */
+.BottomNav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--TabbarHeight);
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background: #ffffff;
+    border-top: 2px solid #dddddd;
+    box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+/* 各タブ */
+.NavItem {
+    flex: 1;
+    height: 100%;
+    border: none;
+    background: transparent;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    color: #777777;
+    font-size: 12px;
+    cursor: pointer;
+}
+.NavIcon {
+    font-size: 200%;
+    line-height: 1;
+}
+.NavItem.Active {
+    color: #2878e0;
+    font-weight: bold;
+}

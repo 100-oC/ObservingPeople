@@ -11,7 +11,71 @@
     </head>
 
     <body>
-        <!--ここに中身-->
+        <header>
+            <h1>　人間観察くん
+                <small><small><small><small>Ver. 0.1</small></small></small></small>
+            </h1><hr>
+        </header>
+        
+        <main id="MainContent">
+            <!--ホーム-->
+            <section id="Home" class="Page Active">
+                <div class="ItemContainer">
+                    <!--キャラリスト-->
+                    <div class ="ItemBlock HomeCharaList">
+                        <h3>キャラリスト</h3><hr>
+                        <ul class="CharaListViewer">キャラを登録してください</ul>
+                    </div>
+<!--                
+                    <div class ="ItemBlock HomeCharaList">
+                        <h3>キャラ詳細</h3><hr>
+                        <p>キャラ名</p>
+                    </div>
+-->
+                </div>              
+<!--
+                <div class ="TimeKeeperBlock">
+                    <hr>
+                    ⏸️▶️⏩
+                    <hr>
+                </div>
+-->
+                <!--行動ログ-->
+                <div class ="ItemBlock BottomLongBlock">
+                    <h3>ログ</h3><hr>
+                    <ul id="ActionLogViewer"></ul>
+                </div>
+            </section>
+
+            <section id="CharaSetting" class="Page">
+                <div class ="ItemBlock">
+                    <big>キャラリスト</big>
+                </div>
+                
+                <div class ="ItemBlock BottomLongBlock">
+                    <ul class="CharaListViewer">キャラを登録してください</ul>
+                </div>
+                
+                <!--TODO:キャラ追加は前面に薄黒で専用画面を表示する-->
+                <div class ="ItemBlock">
+                    <input type="text" id="AddCharaName">
+                    <button id="AddCharaButton">キャラを追加する</button>
+                </div>
+            </section>
+        </main>
+        
+        <!--ページ切り替えタブ-->
+        <nav class="BottomNav">
+            <button class="NavItem" data-page="CharaSetting">
+                <span class="NavIcon">Ω</span>
+                <span>キャラ管理</span>
+            </button>
+            <button class="NavItem Active" data-page="Home">
+                <span class="NavIcon">⌂<br></span>
+                <span>ホーム</span>
+            </button>
+        </nav>
+        
         <script src="main.js"></script>
     </body>
 </html>
