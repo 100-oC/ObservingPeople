@@ -5,6 +5,8 @@ import { GetRand } from "./common.js";
 import { GetRandInt } from "./common.js";
 import { GetActionData } from "./data/actionData.js";
 import { GetActionNum } from "./data/actionData.js";
+import { ActionLogType } from "./ActionLog.js";
+import { AddActionLog } from "./ActionLog.js";
 
 const CharaDataSubKey="Action";  // ここで扱うキャラデータの項目名
 
@@ -25,10 +27,9 @@ export function CharaActionUpdate(deltaTime){
     for(const charaID of charaList){
         let charaData=GetCharaData(charaID,CharaDataSubKey);
         if(!charaData){
-            console.log(charaID,CharaDataSubKey,"：キャラ情報を取得できませんでした");
             // キャラ情報を新規作成
             const actionData=GetActionData(0);
-            const initFinishTime=GetRand(actionData.FinishTime.Min,actionData.FinishTime.Max);
+            const initFinishTime=0.0;
             const initActionData=CreateActionData(actionData.ActionID,initFinishTime);
             charaData=initActionData;
             console.log(charaID,charaData,"：キャラ情報を新規生成");
@@ -45,8 +46,7 @@ export function CharaActionUpdate(deltaTime){
             console.log(charaID,actionID,"行動が完了しました");
 
             // 次の行動を取得
-            // TODO:性格を含めて行動を選出するGetNextAction(charaID)を作成する
-            const nextActionData=GetActionData(GetRandInt(0,GetActionNum()));
+            const nextActionData=GetNextAction();
              if(!nextActionData){
                 console.log("行動を取得できませんでした");
                 continue;
@@ -56,6 +56,8 @@ export function CharaActionUpdate(deltaTime){
             currentTime=0.0;
             finishTime=GetRand(nextActionData.FinishTime.Min,nextActionData.FinishTime.Max);
 
+            // ログを出力
+            AddActionLog(charaID,actionID,ActionLogType.Start);
             console.log(charaID,actionID,finishTime,"行動を選出しました");
         }
 
@@ -63,4 +65,10 @@ export function CharaActionUpdate(deltaTime){
         const setCharaData=CreateActionData(actionID,finishTime,currentTime);
         SetCharaDeta(charaID,CharaDataSubKey,setCharaData);
     }
+}
+
+// 行動を選出する
+function GetNextAction(){
+    // TODO:性格を含めて行動を選出する
+    return GetActionData(GetRandInt(0,GetActionNum()));
 }

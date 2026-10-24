@@ -29,10 +29,6 @@ main {
     box-sizing: border-box;
     padding: 12px;
 }
-/* リストの形式変更 */
-ul {
-    list-style-type: square; /*「□ 要素」にする*/
-}
 
 /* 各画面 */
 .Page {
@@ -57,7 +53,7 @@ ul {
 }
 /* 枠付きブロック：共通 */
 .ItemBlock {
-    border: 1px solid #888;
+    border: 2px solid #888;
     border-radius: 8px; /*ボックスの角の丸さ*/
     padding: 16px;
     margin-bottom: 12px; /*下の余白？*/
@@ -73,7 +69,33 @@ ul {
 /* ホームのキャラリスト */
 .HomeCharaList{
     height: 30dvh;
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
+.HomeCharaList hr {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #888;
+    flex-shrink: 0;
+}
+.HomeCharaList h3{
+    margin-top: 0.9%;
+    flex-shrink: 0;
+}
+.HomeCharaList ul{
+    list-style-type: square; /*「□ 要素」にする*/
+    margin-left: -20px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+
+    height: 100%;
+    box-sizing: border-box;
+}
+
 /* ログ：残りの高さを使う */
 .BottomLongBlock {
     flex: 1;
@@ -82,6 +104,52 @@ ul {
 .BottomLongBlock h3{
     margin-top: 0.9%;
 }
+
+/* 行動ログブロック */
+.LogBlock {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+.LogBlock hr {
+    flex-shrink: 0;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #888;
+}
+.LogBlock h3{
+    margin-top: 0.9%;
+    flex-shrink: 0;
+}
+.LogBlock ul{
+    list-style-type: none;
+    font-size: 80%;
+    margin-left: -20px;
+    margin-top: -5px;
+
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.ScrollArea {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+.ScrollArea::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 1;
+}
+
 /* 再生速度変更 */
 .TimeKeeperBlock{
     text-align: center;

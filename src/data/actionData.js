@@ -4,7 +4,6 @@ const ActionList=new Array();
 export function GetActionData(key){
     // インデックスから取得
     if(typeof key==="number"){
-        console.log(key,ActionList[key],"行動を取得します");
         return ActionList[key];
     }
     // 行動IDから取得
@@ -23,19 +22,48 @@ export function GetActionData(key){
 export function GetActionNum(){return ActionList.length-1;}
 
 // 行動リストの生成
-function SetActinData(actionID,finishTime){
+function SetActinData(actionID,finishTime,log){
     const setActionDataMap={
         ActionID: actionID,
         FinishTime: {
             Min: finishTime.Min,
             Max: finishTime.Max,
         },
-        Parameter: "TODO:選出率操作パラメータ",
+        // Parameter: "TODO:選出率操作パラメータ",
+        Log:{
+            Start: log.Start,
+            Event: log.Event,
+        },
     };
     ActionList.push(setActionDataMap);
 }
 
 // 行動とパラメータの定義
-SetActinData("ぼーっと",    {Min: 10,Max: 60});
-SetActinData("散歩",        {Min: 30,Max: 60});
-SetActinData("座る",        {Min: 10,Max: 60});
+SetActinData("ぼーっと",{
+    Min: 10,Max: 60}, {
+    Start: "ぼーっとしています。",
+    Event: {
+        0: "テスト",
+        1: "TODO:後で作る",}});
+SetActinData("散歩",{
+    Min: 30,Max: 60},{
+    Start: "散歩しています。",
+    Event: {}});
+SetActinData("座る",{
+    Min: 10,Max: 60},{
+    Start: "座っています。",
+    Event: {}});
+SetActinData("見渡す",{
+    Min: 5,Max: 10},{
+    Start: "辺りを見渡しています。",
+    Event: {}});
+
+/*
+// テンプレート
+SetActinData("",{
+    Min: 0,Max: 0},{
+    Start: "",
+    Event: {
+    0: "",
+    1: "",}});
+*/
