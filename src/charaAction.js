@@ -5,8 +5,8 @@ import { GetRand } from "./common.js";
 import { GetRandInt } from "./common.js";
 import { GetActionData } from "./data/actionData.js";
 import { GetActionNum } from "./data/actionData.js";
-import { ActionLogType } from "./ActionLog.js";
-import { AddActionLog } from "./ActionLog.js";
+import { ActionLogType } from "./actionLog.js";
+import { AddActionLog } from "./actionLog.js";
 import { GetTimeScale } from "./timeKeeper.js";
 
 const CharaDataSubKey="Action";  // ここで扱うキャラデータの項目名
