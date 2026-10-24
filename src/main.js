@@ -1,4 +1,5 @@
 import { SelectTab } from "./selectTab.js";
+import { SetTimeScale } from "./timeKeeper.js";
 import { AddCharaList } from "./charaList.js";
 import { CharaActionUpdate } from "./charaAction.js";
 
@@ -23,5 +24,6 @@ function Update(deltaTime) {
 
 // 起動ゾーン
 SelectTab();                        // 下部のタブ切替
+SetTimeScale();                     // 時間倍率変更
 AddCharaList();                     // キャラリストに追加
 requestAnimationFrame(GameLoop);    // ゲームループ

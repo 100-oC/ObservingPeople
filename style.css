@@ -153,7 +153,29 @@ main {
 /* 再生速度変更 */
 .TimeKeeperBlock{
     text-align: center;
-    margin-bottom: 12px;
+
+
+    margin-top: -15px;
+    margin-bottom: -5px;
+}
+.TimeKeeperBlock p{
+    margin-top: -10px;
+    margin-bottom: -22px;
+}
+.TimeKeeperIcon{
+    margin-bottom: -4px;
+    background-color: #ffffff00;
+    border: 2px solid #888;
+    font-size: 40%;
+    padding: 5px;
+    line-height: 1;
+    border-radius: 10px;
+}
+.TimeKeeperIcon.Active {
+    color: #2878e0;
+    border: 2px solid #466ab6;
+    font-size: 55%;
+    font-weight: bold;
 }
 
 /* 下部固定タブバー */

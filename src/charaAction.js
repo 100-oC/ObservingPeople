@@ -7,6 +7,7 @@ import { GetActionData } from "./data/actionData.js";
 import { GetActionNum } from "./data/actionData.js";
 import { ActionLogType } from "./ActionLog.js";
 import { AddActionLog } from "./ActionLog.js";
+import { GetTimeScale } from "./timeKeeper.js";
 
 const CharaDataSubKey="Action";  // ここで扱うキャラデータの項目名
 
@@ -40,7 +41,7 @@ export function CharaActionUpdate(deltaTime){
         let finishTime=charaData.FinishTime;
 
         // 行動時間を計測
-        currentTime+=deltaTime;
+        currentTime+=deltaTime*GetTimeScale();
         // 終了時間に到達していたら更新
         if(currentTime>=finishTime){
             console.log(charaID,actionID,"行動が完了しました");
